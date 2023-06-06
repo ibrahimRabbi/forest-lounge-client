@@ -1,0 +1,5 @@
+.featureImg{
+    background-image: linear-gradient(to right,rgba(0, 0, 0, 0.562),rgba(0, 0, 0, 0.548)) ,url('../../../../public/background/featured.jpg');
+    background-position: center;
+    background-size: cover;
+}

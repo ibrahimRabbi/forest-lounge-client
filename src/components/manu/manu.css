@@ -1,0 +1,6 @@
+.manu{
+    background-image: linear-gradient(to right,rgba(243, 234, 234, 0.685),rgba(255, 248, 248, 0.692)),url('../../../public/background/aboutBG.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
