@@ -24,17 +24,17 @@ const DashBoardManu = () => {
     const {user} = useContext(Context)
     const finding = users.find(v => v?.email === user?.email)
     
-
+    const role = false;
 
   
   
 
     return (
-         <section className='w-[95%]'>
+         <section className='w-full'>
             <div className="drawer drawer-mobile">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
 
-                <div className="drawer-content flex flex-col items-center justify-center">                   
+                <div className="drawer-content flex flex-col items-center justify-center w-[95%]">                   
                      <Outlet/>
                 </div>
                 
@@ -49,7 +49,7 @@ const DashBoardManu = () => {
                                 <h1 className="text-yellow-100 normal-case flex flex-col  text-start text-md mt-3">Forest <span className="relative -top-3 text-xl">Lounge</span></h1>
                             </Link>
                         </li>
-                        { finding?.role ? <>
+                        { role ? <>
                             <li><Link to='adminHome'><IoHome className='text-2xl' />Admin home</Link></li>
                             <li><Link to='addItems'><ImSpoonKnife className='text-2xl' />Add Items</Link></li>
                             <li><Link to='manageItems'><GoListUnordered className='text-2xl' />Manage Items</Link></li>

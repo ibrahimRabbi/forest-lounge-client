@@ -1,6 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import LazyLoad from 'react-lazy-load';
+// import LazyLoad from 'react-lazy-load';
 
 
 const Banner = () => {
@@ -9,34 +9,22 @@ const Banner = () => {
 
             <Carousel>
                 <div>
-
-                    <img src="../../../../public/banner/01.jpg" />
-
+                    <img src="https://i.ibb.co/nckRXcD/04.jpg" />
                 </div>
                 <div>
-
-                    <img src="../../../../public/banner/02.jpg" />
-
+                    <img src="https://i.ibb.co/QNVpqDf/02.jpg" />
                 </div>
                 <div>
-
-                    <img src="../../../../public/banner/03.png" />
-
+                    <img src="https://i.ibb.co/qmBNXBr/03.png" />
                 </div>
                 <div>
-
-                    <img src="../../../../public/banner/04.jpg" />
-
+                    <img src="https://i.ibb.co/3hTxYK5/01.jpg" />
                 </div>
                 <div>
-
-                    <img src="../../../../public/banner/05.png" />
-
+                    <img src="https://i.ibb.co/9p5BPQb/05.png" />
                 </div>
                 <div>
-
-                    <img src="../../../../public/banner/06.png" />
-
+                    <img src="https://i.ibb.co/CMncNxD/06.png" />
                 </div>
             </Carousel>
         </header >

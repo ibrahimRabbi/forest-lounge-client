@@ -1,33 +1,33 @@
-import {  useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Context } from "../../context/AuthContext";
 import useCoustom from "../../utility/CoustomHook";
- 
- 
+
+
 
 const Alluser = () => {
 
-   
+
     const { user } = useContext(Context)
-    const {users,userRefetch}=useCoustom()
+    const { users, userRefetch } = useCoustom()
 
 
 
 
     const makeAdminhandler = (id) => {
-        const obj = {role:'admin'}
-        fetch(`http://localhost:5000/user/${id}`, {
+        const obj = { role: 'admin' }
+        fetch(`https://forest-lounge-server.vercel.app/user/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
-            body : JSON.stringify(obj)
+            body: JSON.stringify(obj)
         })
             .then(res => res.json())
             .then(res => {
                 if (res.modifiedCount > 0) {
-                     userRefetch()
+                    userRefetch()
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -36,14 +36,14 @@ const Alluser = () => {
                         timer: 1500
                     })
                 }
-           })
+            })
     }
 
 
-   
+
     return (
         <section>
-            
+
             <div className="overflow-x-auto w-full">
                 <table className="table border" >
                     <thead>
@@ -57,7 +57,7 @@ const Alluser = () => {
                     </thead>
                     <tbody>
                         {
-                          users.map((value, index) => {
+                            users.map((value, index) => {
                                 console.log()
                                 return (
                                     <tr key={value._id}>

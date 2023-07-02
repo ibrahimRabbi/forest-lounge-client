@@ -5,27 +5,27 @@ import { Context } from "../context/AuthContext";
 import { useToasts } from 'react-toast-notifications';
 import useCoustom from "../utility/CoustomHook";
 
- 
+
 
 const OrderCard = ({ obj }) => {
 
-    const { recipe, image, name, price,_id } = obj;  
+    const { recipe, image, name, price, _id } = obj;
     const { user } = useContext(Context)
     const navigate = useNavigate()
     const location = useLocation()
     const { addToast } = useToasts()
-    const {refetch}=useCoustom()
-    
-    
+    const { refetch } = useCoustom()
+
+
 
 
     const cartHandler = () => {
         if (user) {
-            const data = { itemId: _id, email: user.email, price, name ,image}
-            fetch('http://localhost:5000/orderData', {
+            const data = { itemId: _id, email: user.email, price, name, image }
+            fetch('https://forest-lounge-server.vercel.app/orderData', {
                 method: "POST",
-                headers: { 'content-type': 'application/json'},
-                body : JSON.stringify(data)
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(data)
             })
                 .then(res => res.json())
                 .then(res => {
@@ -33,7 +33,7 @@ const OrderCard = ({ obj }) => {
                     if (res.insertedId) {
                         addToast(`${name} added to cart`, { appearance: 'success', autoDismiss: true, });
                     }
-            })
+                })
         } else {
             Swal.fire({
                 title: 'you are not sign in',
@@ -43,12 +43,12 @@ const OrderCard = ({ obj }) => {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sign In'
-            }).then((result) => { 
+            }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/signin', { state: { from: location } })
                 }
             })
-         }
+        }
     }
     return (
         <div className="card w-96 glass  ">

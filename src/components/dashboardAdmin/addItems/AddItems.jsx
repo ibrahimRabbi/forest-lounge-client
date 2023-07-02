@@ -1,4 +1,4 @@
- 
+
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import './additems.css'
@@ -6,10 +6,10 @@ import './additems.css'
 
 
 const AddItems = () => {
- 
+
 
     const api = import.meta.env.VITE_IMG_HOSTING_API_KEY
-     
+
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
@@ -23,14 +23,14 @@ const AddItems = () => {
 
         fetch(`https://api.imgbb.com/1/upload?key=${api}`, {
             method: "POST",
-            body : fromData
+            body: fromData
         })
-        .then(res => res.json())
+            .then(res => res.json())
             .then(res => {
-                fetch('http://localhost:5000/manu', {
+                fetch('https://forest-lounge-server.vercel.app/manu', {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ name, category, price:parseFloat(price), image:res.data.display_url, detials })
+                    body: JSON.stringify({ name, category, price: parseFloat(price), image: res.data.display_url, detials })
                 })
                     .then(res => res.json())
                     .then(res => {
@@ -44,18 +44,18 @@ const AddItems = () => {
                             })
                         }
                     })
-            } )
- 
-    } 
+            })
+
+    }
 
     return (
         <div className="w-[80%] ml-28 p-14 border rounded-lg">
             <div className='text-center mb-11 text-green-700'>
                 <h1 className='text-4xl'>--Add Items--</h1>
-                <hr className='border-1 border-green-500 mt-4 w-1/2 mx-auto '/>
-           </div>
-     <form onSubmit={onSubmitHandler} className="grid" >          
-        <input type="text" name="name" placeholder="recipe name" className="border border-green-600 name p-3 rounded-lg" required />
+                <hr className='border-1 border-green-500 mt-4 w-1/2 mx-auto ' />
+            </div>
+            <form onSubmit={onSubmitHandler} className="grid" >
+                <input type="text" name="name" placeholder="recipe name" className="border border-green-600 name p-3 rounded-lg" required />
                 <select name='category' defaultValue='pizza' className="select w-full border-green-600 max-w-xs" required>
                     <option disabled>Pick your food category</option>
                     <option>pizza</option>
@@ -67,8 +67,8 @@ const AddItems = () => {
                 <textarea name='detials' className="textarea border border-green-600 name" placeholder="Bio" required></textarea>
                 <input type='file' name='image' className="file-input file-input-bordered border-green-600 w-full max-w-xs" required />
                 <input className='bg-green-700 text-slate-50  py-3 rounded-lg name' type="submit" value='Submit' />
-    </form>
-</div>
+            </form>
+        </div>
     );
 };
 

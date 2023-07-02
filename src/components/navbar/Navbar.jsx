@@ -77,9 +77,13 @@ const Navber = () => {
 
                     <div className="navbar-end">
                         {
-                            user ? <div className="flex justify-center items-center gap-3">
+                            user ? <div className="flex justify-center items-center gap-2"> 
                                 <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-                                    <img className="rounded-full w-20" src={user.photoURL} alt="" />
+                                    <div className="avatar">
+                                        <div className="w-14 rounded-full">
+                                            <img className="rounded-full w-full" src={user.photoURL} alt="" />
+                                        </div>
+                                    </div>
                                 </div>
                                 <button onClick={signOutHandler} className="btn bg-green-500 border-0">Sign Out</button>
                             </div>

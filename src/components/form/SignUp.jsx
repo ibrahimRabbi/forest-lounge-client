@@ -6,25 +6,25 @@ import './form.css'
 
 
 const SignUp = () => {
-    
-    const  {signUp,profile} = useContext(Context)
+
+    const { signUp, profile } = useContext(Context)
     const navigate = useNavigate()
 
     const submitHandler = (e) => {
         e.preventDefault()
         const email = e.target.email.value;
         const pass = e.target.password.value;
-        const  name = e.target.name.value;
+        const name = e.target.name.value;
         const photo = e.target.photo.value;
-      
-        signUp(email,pass)
+
+        signUp(email, pass)
             .then(res => {
                 if (res.user) {
                     profile(res.user, name, photo)
-                    fetch(`http://localhost:5000/user`, {
+                    fetch(`https://forest-lounge-server.vercel.app/user`, {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
-                        body : JSON.stringify({name,email})
+                        body: JSON.stringify({ name, email })
                     })
                         .then(res => res.json())
                         .then(res => {
@@ -32,11 +32,11 @@ const SignUp = () => {
                                 e.target.reset()
                                 navigate('/')
                             }
-                       })
-                   
+                        })
+
                 }
             })
-        .catch(err => console.log(err.message))
+            .catch(err => console.log(err.message))
     }
 
 

@@ -13,7 +13,7 @@ import Order from "./components/order/Order"
 import DashBoardManu from "./components/dashboardUser/DashBoardManu";
 import Cart from "./components/dashboardUser/cart/Cart";
 import Reserve from "./components/dashboardUser/reservation/Reserve";
-import Payment from "./components/dashboardUser/payment/Payment";
+ import Payment from "./components/dashboardUser/payment/Payment";
 import Review from "./components/dashboardUser/review/Review";
 import Admin from "./components/dashboardAdmin/Admin/Admin";
 import Alluser from "./components/dashboardAdmin/AllUser/Alluser";
@@ -65,8 +65,8 @@ function App() {
           element: <Reserve />
         },
         {
-          path: 'payment',
-          element: <Payment />
+          path: "payment",
+          element:<Payment/>
         },
         {
           path: 'paymentHistory',

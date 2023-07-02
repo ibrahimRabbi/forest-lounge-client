@@ -6,14 +6,14 @@ const useCoustom = (category) => {
 
     const [allData, setData] = useState([])
     const [categoryData, setcategory] = useState([])
-    
+
     const { user } = useContext(Context)
 
 
 
     //category wise manuData fetching
     useEffect(() => {
-        fetch(`http://localhost:5000/manu?category=${category}`)
+        fetch(`https://forest-lounge-server.vercel.app/manu?category=${category}`)
             .then(res => res.json())
             .then(res => {
                 setcategory(res)
@@ -24,7 +24,7 @@ const useCoustom = (category) => {
 
     //all manu data fetching
     useEffect(() => {
-        fetch('http://localhost:5000/manu')
+        fetch('https://forest-lounge-server.vercel.app/manu')
             .then(res => res.json())
             .then(res => {
                 setData(res)
@@ -32,29 +32,29 @@ const useCoustom = (category) => {
     }, [])
 
 
-    
+
 
     // user OrderData fecthing using email
-    const { refetch, data:orderData=[] } = useQuery({
+    const { refetch, data: orderData = [] } = useQuery({
         queryKey: ['orderData', user?.email],
         queryFn: async () => {
-            const orderDataFetching = await fetch(`http://localhost:5000/orderData?email=${user?.email}`)
+            const orderDataFetching = await fetch(`https://forest-lounge-server.vercel.app/orderData?email=${user?.email}`)
             const contJson = await orderDataFetching.json()
             return contJson
         }
     })
 
 
-    const { data:users= [], refetch:userRefetch } = useQuery({
+    const { data: users = [], refetch: userRefetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const userData = await fetch('http://localhost:5000/user')
+            const userData = await fetch('https://forest-lounge-server.vercel.app/user')
             const toConvert = userData.json();
             return toConvert
         }
     })
 
-    return { allData,categoryData,orderData,refetch,users,userRefetch }
+    return { allData, categoryData, orderData, refetch, users, userRefetch }
 
 }
 
